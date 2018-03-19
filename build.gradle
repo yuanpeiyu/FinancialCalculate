@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    //buildToolsVersion '25.0.2'
+    defaultConfig {
+        applicationId "com.yuanpeiyu.fangdai"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        myConfig {
+            storeFile file("pekall_key")
+            storePassword "caspekall"
+            keyAlias "pekall_release"
+            keyPassword "caspekall"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+        maven {
+            url "http://192.168.10.224:8081/nexus/content/groups/public"
+        }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.15'
+    }
+}
