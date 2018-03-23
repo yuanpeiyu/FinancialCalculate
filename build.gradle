@@ -45,7 +45,8 @@ buildscript {
         maven {
             url "http://192.168.10.224:8081/nexus/content/groups/public"
         }
-
+        jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'

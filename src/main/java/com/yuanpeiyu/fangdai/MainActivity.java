@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         binding.setActivity(this);
         modal = new CalculateModal();
     }
-
     public void calculate() {
         Log.d("ypy", "开始计算");
         int totalA = Integer.parseInt(binding.editText.getText().toString()) * 10000;
